@@ -9,15 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.main.model.Employee;
 import com.spring.main.service.Empservice;
 
 
-
-@Controller
+@RestController
+//@Controller
 public class Springcontroller {
 	
 	@Autowired
@@ -103,6 +105,15 @@ public class Springcontroller {
 		List<Employee> lst2=service.findempinrange(a,b);
 		model.addAttribute("lst2",lst2);
 		return "empdisp";
+		
+	}
+	@RequestMapping(value="empname/{name}",method= RequestMethod.GET)
+	public Employee empname(@PathVariable("name") String name){
+//		float a=Float.parseFloat(request.getParameter("sal1"));
+//		float b=Float.parseFloat(request.getParameter("sal2"));
+		//Employee lst=service.findname(name);
+		//model.addAttribute("lst2",lst2);
+		return this.service.findname(name);
 		
 	}
 	

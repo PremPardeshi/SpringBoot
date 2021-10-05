@@ -25,8 +25,8 @@ public class Empservice {
 	
 	public List<Employee> getallEmps()
 	{
-		return dao.findAll();
-		
+		//return dao.findAll();
+		return dao.getalluser();
 	}
 	public Employee getEmpById(int id) {
 		return dao.getById(id);
@@ -45,6 +45,11 @@ public class Empservice {
 	public List<Employee> findempinrange(float sal1,float sal2){
 		
 		return dao.findBySalaryBetween(sal1,sal2);
+		
+	}
+	public Employee findname(String name) {
+		
+		return dao.getByName(name);
 		
 	}
 }
